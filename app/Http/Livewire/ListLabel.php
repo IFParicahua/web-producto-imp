@@ -27,15 +27,24 @@ class ListLabel extends Component
             'peso' => 'required',
             'idproducto' => 'required',
         ]);
-        // $col = trim($this->colada, '/');
+        $var1 = strval($this->colada);
+        $var2 = '12/03';
+        $col = str_replace('/', '', $this->colada);
 
-        // $barcode = $col."".$pack."".$peso;
+        if($this->paquete < 100){
+            $pack = "0".$this->paquete;
+        }else{
+            $pack = $this->paquete;
+        }
+
+        $peso = str_replace('.', '', $this->peso);
+        $barcode = $col."".$pack."".$peso;
 
         $item = new PrintDetail;
         $item->colada = $this->colada;
         $item->peso = $this->peso;
         $item->package = $this->paquete;
-        // $item->barcode = $barcode;
+        $item->barcode = $barcode;
         $item->print_label_id = $this->idproducto;
         $item->save();
         $this->colada = "";

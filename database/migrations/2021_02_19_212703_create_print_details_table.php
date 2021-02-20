@@ -15,8 +15,8 @@ class CreatePrintDetailsTable extends Migration
     {
         Schema::create('print_details', function (Blueprint $table) {
             $table->id();
-            $table->integer('colada');
-            $table->integer('peso');
+            $table->string('colada');
+            $table->decimal('peso', 8, 3);
             $table->integer('package');
             $table->string('barcode')->nullable();
             $table->unsignedBigInteger('print_label_id');

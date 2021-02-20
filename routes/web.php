@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\IndexComponent;
 use App\Http\Livewire\SaveLabel;
-
+use App\Http\Controllers\GeneratePDFController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,3 +26,5 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', IndexComponent::class)->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/save', SaveLabel::class)->name('save');
+
+Route::get('/generatepdf', [App\Http\Controllers\GeneratePDFController::class, 'generate'])->name('generatepdf');

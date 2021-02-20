@@ -11,12 +11,12 @@
                     </div>
                     <div class="col-span-2">
                         <label for="paquete" class="block font-medium text-gray-700">Paquete</label>
-                        <input type="text" name="paquete" id="paquete"  wire:model="paquete" autocomplete="given-name" class="text-sm mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm border-gray-300 rounded-md">
+                        <input type="number" name="paquete" id="paquete"  wire:model="paquete" autocomplete="given-name" class="text-sm mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm border-gray-300 rounded-md">
                         @error('paquete') <span class="error text-sm text-red-500">{{ $message }}</span> @enderror
                     </div>
                     <div class="col-span-2">
                       <label for="peso" class="block font-medium text-gray-700">Peso</label>
-                      <input type="text" name="peso" id="peso"  wire:model="peso"  autocomplete="given-name" class="text-sm mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm border-gray-300 rounded-md">
+                      <input step="any" type="number" name="peso" id="peso"  wire:model="peso"  autocomplete="given-name" class="text-sm mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm border-gray-300 rounded-md">
                       @error('peso') <span class="error text-sm text-red-500">{{ $message }}</span> @enderror
                     </div>
                     <div  class="col-span-1 mt-7 ">
