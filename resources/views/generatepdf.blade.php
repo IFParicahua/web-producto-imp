@@ -29,13 +29,12 @@
             border-collapse: collapse;
             margin: 0 0 1em 0;
             caption-side: top;
+            border: 1px solid #000;
          }
          caption, td, th {
             padding: 0.3em;
          }
-         th, td {
-            border: 1px solid #000;
-         }
+
          th:lastchild, td:lastchild {
              border-right: 0;
          }
@@ -46,7 +45,7 @@
          .verticalText {
             writing-mode: vertical-lr;
             transform: rotate(-90deg);
-            width: 200px;
+            width: 240px;
         }
         .code{
             height: 80px !important;
@@ -89,10 +88,10 @@
 
  <table>
     <tr>
-        <td colspan="3">LAS LOMAS</td>
+        <td colspan="3" style="font-size: 26px">LAS LOMAS</td>
     </tr>
     <tr>
-        <td colspan="2">NB732-AH500S</td>
+        <td colspan="2" style="font-size: 18px">NB732-AH500S</td>
         <td colspan="1" rowspan="8">
             <div class="verticalText">
                 {{ $item->barcode }}
@@ -101,10 +100,10 @@
         </td>
     </tr>
     <tr>
-        <td colspan="2">{{ $item->print_label->product->diametro }}</td>
+        <td colspan="2" style="font-size: 20px">{{ $item->print_label->product->diametro }}</td>
     </tr>
     <tr>
-        <td colspan="2">{{ $item->print_label->product->longitud }}</td>
+        <td colspan="2" style="font-size: 20px">{{ $item->print_label->product->longitud }}</td>
     </tr>
     <tr>
         <td colspan="1">Lote:</td>
@@ -122,10 +121,10 @@
         <td colspan="2">Peso</td>
     </tr>
     <tr>
-        <td colspan="2">{{ $item->peso }}</td>
+        <td colspan="2" style="font-size: 24px">{{ $item->peso }}</td>
     </tr>
     <tr>
-        <td colspan="3" style="text-align: center">HECHO EN BOLIVIA</td>
+        <td colspan="3" style="text-align: center; font-size: 16px">HECHO EN BOLIVIA</td>
     </tr>
 </table>
  @empty
