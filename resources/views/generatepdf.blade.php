@@ -88,11 +88,10 @@
 
  <table>
     <tr>
-        <td colspan="3" style="font-size: 26px">LAS LOMAS</td>
+        <td colspan="3" style="font-size: 26px; padding-top: 100px;">LAS LOMAS</td>
     </tr>
     <tr>
         <td colspan="3" style="font-size: 18px">NB732-AH500S</td>
-
     </tr>
     <tr>
         <td colspan="2" style="font-size: 20px">{{ $item->print_label->product->diametro }}</td>
@@ -108,7 +107,7 @@
     </tr>
     <tr>
         <td colspan="1">Lote:</td>
-        <td colspan="1">--</td>
+        <td colspan="1">{{ $item->print_label->lote }}</td>
     </tr>
     <tr>
         <td colspan="1">Paquete</td>

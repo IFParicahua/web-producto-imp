@@ -12,7 +12,7 @@ class GeneratePDFController extends Controller
     public function generate($id){
         $collection = PrintDetail::where('print_label_id', $id)->get();
         $pdf = PDF::loadView('generatepdf', compact('collection'));
-        $pdf->setPaper('a6');
+        $pdf->setPaper('a5', 'portrait');
 
         return $pdf->stream();
         //return view('generatepdf', compact('collection'));
