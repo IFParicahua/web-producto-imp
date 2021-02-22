@@ -18,9 +18,9 @@ class OperationSeeder extends Seeder
             [
                 'name'=>'guardar',
             ],[
-                'name'=>'actualizar',
-            ],[
                 'name'=>'editar',
+            ],[
+                'name'=>'eliminar',
             ]
         ]);
     }

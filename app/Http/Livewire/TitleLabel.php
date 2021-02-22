@@ -13,8 +13,10 @@ class TitleLabel extends Component
     public $producto;
     public $diametro;
     public $m_alert;
-    public $horario;
     public $turno;
+    public $lote;
+    public $status;
+    public $date_new;
 
     public function complete_date(){
         $id_encontrar = Product::where('cod_material', $this->producto)->first();
@@ -27,6 +29,7 @@ class TitleLabel extends Component
 
     public function savetitle(){
         $this->validate([
+            'lote' => 'required|unique:print_labels',
             'producto' => 'required',
             'diametro' => 'required',
         ]);
@@ -37,9 +40,11 @@ class TitleLabel extends Component
             $title = new PrintLabel;
             $title->date_print = $fecha;
             $title->turn = $this->turno;
-            $title->user_id = Auth::user()->id;
             $title->product_id = $id_encontrar->id;
+            $title->user_id = Auth::user()->id;
+            $title->lote = $this->lote;
             $title->save();
+            $this->status = 'disabled';
             $this->emit('getDetail', $title->id);
             $this->m_alert = " ";
         } else {
@@ -49,6 +54,13 @@ class TitleLabel extends Component
 
     public function render()
     {
+        $dato = Product::where('cod_material', $this->producto)->first();
+        if($dato){
+            $this->diametro = $dato->diametro;
+        }
+        if($this->lote == null){
+            $this->status = '';
+        }
         $hora = date("H");
         if($hora < 6){
             $this->turno = 'Noche';
@@ -59,6 +71,7 @@ class TitleLabel extends Component
         }else{
             $this->turno = 'Noche';
         }
+        $this->date_new = date("d/m/Y");
 
         return view('livewire.title-label');
     }

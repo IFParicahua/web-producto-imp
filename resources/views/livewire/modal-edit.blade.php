@@ -3,10 +3,6 @@
         <div class="px-4 py-5 bg-white sm:p-6">
             <div class="grid grid-cols-6 gap-6">
                 <div class="col-span-4 sm:col-span-2">
-                    <label for="colada_d" class="block text-sm font-medium text-gray-700">Colada</label>
-                    <input type="text" name="colada_d" id="colada_d" wire:model="colada_d" value="{{ $colada_d }}"  autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                </div>
-                <div class="col-span-4 sm:col-span-2">
                     <label for="paquete_d" class="block text-sm font-medium text-gray-700">Paquete</label>
                     <input type="text" name="paquete_d" id="paquete_d" wire:model="paquete_d" value="{{ $paquete_d }}" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     @if($errors->has('paquete_d'))

@@ -8,7 +8,6 @@ use Livewire\Component;
 class ModalEdit extends Component
 {
     public $idlist_d;
-    public $colada_d;
     public $paquete_d;
     public $peso_d;
 
@@ -26,13 +25,11 @@ class ModalEdit extends Component
 
     public function saveedit(){
         $this->validate([
-            'colada_d' => 'required',
             'paquete_d' => 'required',
             'peso_d' => 'required',
         ]);
 
         $item = PrintDetail::find($this->idlist_d);
-        $item->colada = $this->colada_d;
         $item->peso = $this->peso_d;
         $item->package = $this->paquete_d;
         $item->save();

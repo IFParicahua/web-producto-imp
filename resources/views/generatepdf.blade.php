@@ -48,7 +48,7 @@
             width: 240px;
         }
         .code{
-            height: 80px !important;
+            height: 50px !important;
         }
     </style>
     <br>
@@ -91,16 +91,17 @@
         <td colspan="3" style="font-size: 26px">LAS LOMAS</td>
     </tr>
     <tr>
-        <td colspan="2" style="font-size: 18px">NB732-AH500S</td>
-        <td colspan="1" rowspan="8">
+        <td colspan="3" style="font-size: 18px">NB732-AH500S</td>
+
+    </tr>
+    <tr>
+        <td colspan="2" style="font-size: 20px">{{ $item->print_label->product->diametro }}</td>
+        <td colspan="1" rowspan="7">
             <div class="verticalText">
                 {{ $item->barcode }}
                 {!! DNS1D::getBarcodeHTML($item->barcode, 'c128'); !!}
             </div>
         </td>
-    </tr>
-    <tr>
-        <td colspan="2" style="font-size: 20px">{{ $item->print_label->product->diametro }}</td>
     </tr>
     <tr>
         <td colspan="2" style="font-size: 20px">{{ $item->print_label->product->longitud }}</td>
@@ -124,7 +125,7 @@
         <td colspan="2" style="font-size: 24px">{{ $item->peso }}</td>
     </tr>
     <tr>
-        <td colspan="3" style="text-align: center; font-size: 16px">HECHO EN BOLIVIA</td>
+        <td colspan="3" style="text-align: center; font-size: 16px; padding-top: 50px;">HECHO EN BOLIVIA</td>
     </tr>
 </table>
  @empty

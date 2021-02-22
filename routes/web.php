@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\IndexComponent;
 use App\Http\Livewire\SaveLabel;
 use App\Http\Controllers\GeneratePDFController;
+use App\Http\Livewire\UserListComponent;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +17,8 @@ use App\Http\Controllers\GeneratePDFController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return redirect('dashboard');
 });
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -26,5 +28,6 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', IndexComponent::class)->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/save', SaveLabel::class)->name('save');
+Route::middleware(['auth:sanctum', 'verified'])->get('/generatepdf/{id}', [App\Http\Controllers\GeneratePDFController::class, 'generate'])->name('generatepdf');
 
-Route::get('/generatepdf', [App\Http\Controllers\GeneratePDFController::class, 'generate'])->name('generatepdf');
+Route::middleware(['auth:sanctum', 'admin'])->get('/users', UserListComponent::class)->name('users');

@@ -3,12 +3,13 @@
 namespace App\Http\Livewire;
 
 use App\Models\PrintDetail;
+use App\Models\PrintLabel;
 use Livewire\Component;
 
 class ListLabel extends Component
 {
     public $idproducto;
-    public $colada;
+    public $lote;
     public $paquete;
     public $peso;
 
@@ -18,18 +19,16 @@ class ListLabel extends Component
 
     public function getDetail($id){
         $this->idproducto = $id;
+        $var1 = PrintLabel::where('id', $id)->first();
+        $this->lote = $var1->lote;
     }
 
     public function savelist(){
         $this->validate([
-            'colada' => 'required',
             'paquete' => 'required',
             'peso' => 'required',
             'idproducto' => 'required',
         ]);
-        $var1 = strval($this->colada);
-        $var2 = '12/03';
-        $col = str_replace('/', '', $this->colada);
 
         if($this->paquete < 100){
             $pack = "0".$this->paquete;
@@ -38,16 +37,14 @@ class ListLabel extends Component
         }
 
         $peso = str_replace('.', '', $this->peso);
-        $barcode = $col."".$pack."".$peso;
+        $barcode = $this->lote."".$pack."".$peso;
 
         $item = new PrintDetail;
-        $item->colada = $this->colada;
         $item->peso = $this->peso;
         $item->package = $this->paquete;
         $item->barcode = $barcode;
         $item->print_label_id = $this->idproducto;
         $item->save();
-        $this->colada = "";
         $this->paquete = "";
         $this->peso = "";
         $this->emit('getView', $this->idproducto);

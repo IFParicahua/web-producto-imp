@@ -17,6 +17,7 @@ class CreatePrintLabelsTable extends Migration
             $table->id();
             $table->date('date_print');
             $table->string('turn');
+            $table->string('lote');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('product_id');
