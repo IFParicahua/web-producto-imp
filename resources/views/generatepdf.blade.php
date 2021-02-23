@@ -8,21 +8,13 @@
 </head>
 <body>
     <style>
+        html {
+            margin: 15pt 15pt;
+        }
         body{
             font-family: sans-serif;
             font-size: 14px;
           }
-        .title1{
-            text-align: start;
-            border-right: none;
-        }
-        .title2{
-            border-right: none;
-            border-left: none;
-        }
-        .title3{
-            border-left: none;
-        }
         table {
             width: 100%;
             text-align: left;
@@ -30,6 +22,27 @@
             margin: 0 0 1em 0;
             caption-side: top;
             border: 1px solid #000;
+         }
+         .title{
+            font-size: 20px; padding-top: 70pt;
+         }
+         .subtitle{
+            font-size: 18px
+         }
+         .data{
+            width: 70pt
+         }
+         .text_diametro{
+            font-size: 20px
+         }
+         .text_longitud{
+            font-size: 20px
+         }
+         .text_peso{
+            font-size: 24px
+         }
+         .footer{
+            text-align: center; font-size: 16px;
          }
          caption, td, th {
             padding: 0.3em;
@@ -39,16 +52,15 @@
              border-right: 0;
          }
          th {
-            width: 25%;
             padding-bottom: 5px;
          }
-         .verticalText {
+         .div_code {
             writing-mode: vertical-lr;
             transform: rotate(-90deg);
-            width: 240px;
+            width: 120pt;
         }
         .code{
-            height: 50px !important;
+            height: 46px !important;
         }
     </style>
     <br>
@@ -88,43 +100,43 @@
 
  <table>
     <tr>
-        <td colspan="3" style="font-size: 26px; padding-top: 100px;">LAS LOMAS</td>
+        <td colspan="3" class="title">LAS LOMAS</td>
     </tr>
     <tr>
-        <td colspan="3" style="font-size: 18px">NB732-AH500S</td>
+        <td colspan="3" class="subtitle">NB732-AH500S</td>
     </tr>
     <tr>
-        <td colspan="2" style="font-size: 20px">{{ $item->print_label->product->diametro }}</td>
+        <td colspan="2" class="text_diametro">{{ $item->print_label->product->diametro }}</td>
         <td colspan="1" rowspan="7">
-            <div class="verticalText">
+            <div class="div_code">
                 {{ $item->barcode }}
                 {!! DNS1D::getBarcodeHTML($item->barcode, 'c128'); !!}
             </div>
         </td>
     </tr>
     <tr>
-        <td colspan="2" style="font-size: 20px">{{ $item->print_label->product->longitud }}</td>
+        <td colspan="2" class="text_longitud">{{ $item->print_label->product->longitud }}</td>
     </tr>
     <tr>
-        <td colspan="1">Lote:</td>
+        <td colspan="1" class="data">Lote:</td>
         <td colspan="1">{{ $item->print_label->lote }}</td>
     </tr>
     <tr>
-        <td colspan="1">Paquete</td>
+        <td colspan="1" class="data">Paquete:</td>
         <td colspan="1">{{ $item->package }}</td>
     </tr>
     <tr>
-        <td colspan="1">Materia</td>
+        <td colspan="1" class="data">Materia:</td>
         <td colspan="1">{{ $item->print_label->product->cod_material }}</td>
     </tr>
     <tr>
         <td colspan="2">Peso</td>
     </tr>
     <tr>
-        <td colspan="2" style="font-size: 24px">{{ $item->peso }}</td>
+        <td colspan="3" class="text_peso">{{ $item->peso }}</td>
     </tr>
     <tr>
-        <td colspan="3" style="text-align: center; font-size: 16px; padding-top: 50px;">HECHO EN BOLIVIA</td>
+        <td colspan="3" class="footer">HECHO EN BOLIVIA</td>
     </tr>
 </table>
  @empty
