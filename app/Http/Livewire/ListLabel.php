@@ -12,6 +12,7 @@ class ListLabel extends Component
     public $lote;
     public $paquete;
     public $peso;
+    public $id_imp_pdf;
 
     protected $listeners = [
         'getDetail'
@@ -45,10 +46,16 @@ class ListLabel extends Component
         $item->barcode = $barcode;
         $item->print_label_id = $this->idproducto;
         $item->save();
+        $this->id_imp_pdf = $item->id;
         $this->paquete = "";
         $this->peso = "";
         $this->emit('getView', $this->idproducto);
+
     }
+
+    // public function imprimir(){
+    //     $this->dispatchBrowserEvent('imprimirbtn');
+    // }
 
     public function render()
     {

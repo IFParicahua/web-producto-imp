@@ -21,13 +21,18 @@
                 </div>
             </form>
             <div class="col-span-1 mt-8">
-                <a href="generatepdf/{{$idproducto}}" target="_blank" class="border border-red-500 bg-red-500 text-xl w-12 text-white rounded-md px-4 py-1 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline ">
+                <a href="generatepdf/{{$id_imp_pdf}}" target="_blank" class="border border-red-500 bg-red-500 text-xl w-12 text-white rounded-md px-4 py-1 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline ">
                     <i class="fas fa-file-pdf"></i>
                 </a>
                 {{--  imprimir con java script  --}}
-                <iframe src="{{ asset('generatepdf/1') }}" id="PDFtoPrint"> </iframe>
-                <input type="button" value="Print" onclick="document.getElementById('PDFtoPrint').focus(); document.getElementById('PDFtoPrint').contentWindow.print();">
+                <iframe src="{{ asset('generatepdf/'.$id_imp_pdf)}}" id="PDFtoPrint" style="display: none"> </iframe>
             </div>
         </div>
     </div>
 </div>
+<script>
+    window.addEventListener('imprimirbtn', event =>{
+        document.getElementById('PDFtoPrint').focus();
+        document.getElementById('PDFtoPrint').contentWindow.print();
+    })
+</script>

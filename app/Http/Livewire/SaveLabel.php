@@ -22,6 +22,7 @@ class SaveLabel extends Component
     public function getView($id){
         $this->id_label = $id;
         $this->dispatchBrowserEvent('closeModal');
+        $this->dispatchBrowserEvent('imprimirbtn');
     }
 
     public function editItem($id){

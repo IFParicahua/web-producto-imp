@@ -58,6 +58,7 @@
             font-size: 24pt;
             padding-top: 35px;
             padding-bottom: 10px;
+
          }
          .text_peso{
             font-size: 36pt;
@@ -68,7 +69,7 @@
             font-size: 18pt;
             padding-top: 30px
          }
-{{--
+        {{--
          caption, td, th {
             padding: 65px;
          }  --}}
@@ -90,38 +91,6 @@
             height: 85px !important;
         }
     </style>
-    <br>
-{{--
-    <table border="1">
-        <tr>
-          <td colspan="3">alfa</td>
-          <td>bravo</td>
-          <td rowspan="2">charlie</td>
-        </tr>
-        <tr>
-          <td>delta</td>
-          <td>echo</td>
-          <td>foxtrot</td>
-          <td>golf</td>
-        </tr>
-        <tr>
-          <td>hotel</td>
-          <td colspan="3" rowspan="2">india</td>
-          <td>juliet</td>
-        </tr>
-        <tr>
-          <td>kilo</td>
-          <td>lima</td>
-        </tr>
-        <tr>
-          <td>mike</td>
-          <td>november</td>
-          <td>oscar</td>
-          <td>papa</td>
-          <td>quebec</td>
-        </tr>
-    </table>
- --}}
 
  @forelse ($collection as $item)
 
@@ -171,6 +140,8 @@
  @empty
      <p>No hay datos encontrados</p>
  @endforelse
+
+
 
 </body>
 </html>
