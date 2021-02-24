@@ -8,9 +8,7 @@
 </head>
 <body>
     <style>
-        html {
-            margin: 15pt 15pt;
-        }
+        {{--  html{margin:0px 50px}  --}}
         body{
             font-family: sans-serif;
             font-size: 14px;
@@ -21,32 +19,59 @@
             border-collapse: collapse;
             margin: 0 0 1em 0;
             caption-side: top;
-            border: 1px solid #000;
          }
+
          .title{
-            font-size: 20px; padding-top: 70pt;
+            padding-top: 200px;
+            font-size: 64pt;
+            font-weight: bold;
+            padding-bottom: 10px;
+            padding-left: 6px
          }
          .subtitle{
-            font-size: 18px
-         }
-         .data{
-            width: 70pt
+            font-size: 36pt;
+            padding: 6px;
+            padding-bottom: 35px;
          }
          .text_diametro{
-            font-size: 20px
+            font-size: 36pt;
+            font-weight: bold
          }
          .text_longitud{
-            font-size: 20px
+            font-size: 36pt;
+            padding-bottom: 35px
+         }
+         .data_title{
+            width: 150pt;
+            padding-right: 20px;
+            font-size: 24pt;
+            padding-top: 0.4em;
+            padding-bottom: 0.4em;
+         }
+         .data_text{
+            font-size: 24pt;
+            width: 400pt;
+            padding-top: 0.4em;
+            padding-bottom: 0.4em;
+         }
+         .title_peso{
+            font-size: 24pt;
+            padding-top: 35px;
+            padding-bottom: 10px;
          }
          .text_peso{
-            font-size: 24px
+            font-size: 36pt;
+            font-weight: bold;
          }
          .footer{
-            text-align: center; font-size: 16px;
+            text-align: center;
+            font-size: 18pt;
+            padding-top: 30px
          }
+{{--
          caption, td, th {
-            padding: 0.3em;
-         }
+            padding: 65px;
+         }  --}}
 
          th:lastchild, td:lastchild {
              border-right: 0;
@@ -54,13 +79,15 @@
          th {
             padding-bottom: 5px;
          }
+
          .div_code {
             writing-mode: vertical-lr;
             transform: rotate(-90deg);
             width: 120pt;
+            padding-top: 40px
         }
         .code{
-            height: 46px !important;
+            height: 85px !important;
         }
     </style>
     <br>
@@ -100,43 +127,45 @@
 
  <table>
     <tr>
-        <td colspan="3" class="title">LAS LOMAS</td>
+        <td colspan="4" class="title">LAS LOMAS</td>
     </tr>
     <tr>
-        <td colspan="3" class="subtitle">NB732-AH500S</td>
+        <td colspan="4" class="subtitle">NB732 - AH500S</td>
     </tr>
     <tr>
-        <td colspan="2" class="text_diametro">{{ $item->print_label->product->diametro }}</td>
+        <td colspan="3" class="text_diametro">{{ $item->print_label->product->diametro }} mm</td>
+
+    </tr>
+    <tr>
+        <td colspan="3" class="text_longitud">{{ $item->print_label->product->longitud }}</td>
         <td colspan="1" rowspan="7">
             <div class="div_code">
                 {{ $item->barcode }}
-                {!! DNS1D::getBarcodeHTML($item->barcode, 'c128'); !!}
+                {!! DNS1D::getBarcodeHTML($item->barcode, 'C128'); !!}
             </div>
         </td>
     </tr>
     <tr>
-        <td colspan="2" class="text_longitud">{{ $item->print_label->product->longitud }}</td>
+        <td colspan="1"class="data_title">Lote:</td>
+        <td colspan="2"class="data_text">{{ $item->print_label->lote }}</td>
     </tr>
     <tr>
-        <td colspan="1" class="data">Lote:</td>
-        <td colspan="1">{{ $item->print_label->lote }}</td>
+        <td colspan="1"class="data_title">Paquete:</td>
+        <td colspan="2"class="data_text">{{ $item->package }}</td>
+
     </tr>
     <tr>
-        <td colspan="1" class="data">Paquete:</td>
-        <td colspan="1">{{ $item->package }}</td>
+        <td colspan="1" class="data_title">Materia:</td>
+        <td colspan="2" class="data_text">{{ $item->print_label->product->cod_material }}</td>
     </tr>
     <tr>
-        <td colspan="1" class="data">Materia:</td>
-        <td colspan="1">{{ $item->print_label->product->cod_material }}</td>
+        <td colspan="3" class="title_peso">Peso</td>
     </tr>
     <tr>
-        <td colspan="2">Peso</td>
+        <td colspan="3" class="text_peso">{{ $item->peso }} kg</td>
     </tr>
     <tr>
-        <td colspan="3" class="text_peso">{{ $item->peso }}</td>
-    </tr>
-    <tr>
-        <td colspan="3" class="footer">HECHO EN BOLIVIA</td>
+        <td colspan="4" class="footer">HECHO EN BOLIVIA</td>
     </tr>
 </table>
  @empty
